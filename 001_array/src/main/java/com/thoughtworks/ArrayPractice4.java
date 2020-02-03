@@ -8,6 +8,34 @@ public class ArrayPractice4 {
     public static int[] insert(int number) {
         int[] array = new int[]{1, 20, 50, 100};
 
-        return null;
+        int[] insertedArr = new int[array.length + 1];
+
+        if (number < array[0]) {
+            insertedArr[0] = number;
+            for (int i = 1; i < insertedArr.length; i++) {
+                insertedArr[i] = array[i - 1];
+            }
+        } else if (number > array[array.length - 1]) {
+            insertedArr[insertedArr.length - 1] = number;
+            for (int i = 0; i < array.length; i++) {
+                insertedArr[i] = array[i];
+            }
+        } else {
+            insertedArr[0] = array[0];
+            insertedArr[insertedArr.length-1] = array[array.length-1];
+            boolean hasInserted = false;
+            for (int i = 1; i < array.length; i++) {
+                if (number < array[i] && number > array[i - 1]) {
+                    insertedArr[i] = number;
+                    hasInserted = true;
+
+                } else if(!hasInserted){
+                    insertedArr[i] = array[i];
+                } else if(hasInserted) {
+                    insertedArr[i] = array[i-1];
+                }
+            }
+        }
+        return insertedArr;
     }
 }
