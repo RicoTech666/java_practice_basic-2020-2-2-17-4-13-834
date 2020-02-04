@@ -22,17 +22,17 @@ public class ArrayPractice4 {
             }
         } else {
             insertedArr[0] = array[0];
-            insertedArr[insertedArr.length-1] = array[array.length-1];
+            insertedArr[insertedArr.length - 1] = array[array.length - 1];
             boolean hasInserted = false;
             for (int i = 1; i < array.length; i++) {
                 if (number < array[i] && number > array[i - 1]) {
                     insertedArr[i] = number;
                     hasInserted = true;
 
-                } else if(!hasInserted){
+                } else if (!hasInserted) {
                     insertedArr[i] = array[i];
-                } else if(hasInserted) {
-                    insertedArr[i] = array[i-1];
+                } else {
+                    insertedArr[i] = array[i - 1];
                 }
             }
         }
